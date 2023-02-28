@@ -10,21 +10,22 @@ import kotlin.math.pow
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        val estatura : EditText = findViewById<EditText>(R.id.etEstatura)
-        val peso : EditText = findViewById<EditText>(R.id.etPeso)
-        val calcular : Button = findViewById<Button>(R.id.btnCalcular)
-        val resultado : TextView = findViewById<TextView>(R.id.tvResultado)
-        val rango : TextView = findViewById<TextView>(R.id.tvRango)
-        var imc : Double = 0.0;
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val estatura : EditText = findViewById(R.id.etEstatura) as EditText
+        val peso : EditText = findViewById(R.id.etPeso) as EditText
+        val calcular : Button = findViewById(R.id.btnCalcular) as Button
+        val resultado : TextView = findViewById(R.id.tvResultado) as TextView
+        val rango : TextView = findViewById(R.id.tvRango) as TextView
+
 
         calcular.setOnClickListener {
             val height = estatura.text.toString().toDouble()
             val weight = peso.text.toString().toDouble()
 
-            imc = calcularIMC(height, weight)
+            val imc = calcularIMC(height, weight)
 
             if (imc < 18.5) {
                 resultado.setText(imc.toString())
